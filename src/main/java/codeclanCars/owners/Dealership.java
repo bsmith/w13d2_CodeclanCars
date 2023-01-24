@@ -13,8 +13,8 @@ public class Dealership extends CarOwner {
     }
 
     public void buy(ICar car) {
-        if (car.getValue() <= this.getBalanceOfFunds()) {
-            this.setBalanceOfFunds(this.getBalanceOfFunds() - car.getValue());
+        if (this.canBuy(car.getValue())) {
+            this.spendMoney(car.getValue());
             this.addToInventory(car);
         }
     }
@@ -23,7 +23,7 @@ public class Dealership extends CarOwner {
         double price = car.getValue() * markup;
         if (customer.buy(car, price)) {
             this.removeInventory(car);
-            this.setBalanceOfFunds(this.getBalanceOfFunds() + price);
+            this.receiveMoney(price);
         }
     }
 }

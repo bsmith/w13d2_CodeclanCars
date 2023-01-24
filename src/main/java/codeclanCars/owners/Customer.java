@@ -8,8 +8,8 @@ public class Customer extends CarOwner {
     }
 
     public boolean buy(ICar car, double value) {
-        if (value <= this.getBalanceOfFunds()) {
-            this.setBalanceOfFunds(this.getBalanceOfFunds() - value);
+        if (this.canBuy(value)) {
+            this.spendMoney(value);
             this.addToInventory(car);
             return true;
         }

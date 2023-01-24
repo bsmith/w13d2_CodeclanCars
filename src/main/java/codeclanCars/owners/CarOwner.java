@@ -17,8 +17,16 @@ public abstract class CarOwner {
         return balanceOfFunds;
     }
 
-    public void setBalanceOfFunds(double balanceOfFunds) {
-        this.balanceOfFunds = balanceOfFunds;
+    public void spendMoney(double money) {
+        this.balanceOfFunds -= money;
+    }
+
+    public void receiveMoney(double money) {
+        this.balanceOfFunds += money;
+    }
+
+    public boolean canBuy(double price) {
+        return price <= this.getBalanceOfFunds();
     }
 
     public ArrayList<ICar> getInventory() {
