@@ -1,6 +1,5 @@
 package codeclanCars.owners;
 
-import codeclanCars.cars.ElectricCar;
 import codeclanCars.cars.ICar;
 
 public class Customer extends CarOwner {
@@ -8,10 +7,14 @@ public class Customer extends CarOwner {
         super(balanceOfFunds);
     }
 
-    public void buy(ICar car) {
-        if (car.getValue() <= this.getBalanceOfFunds()) {
-            this.setBalanceOfFunds(this.getBalanceOfFunds() - car.getValue());
+    public boolean buy(ICar car, double value) {
+        if (value <= this.getBalanceOfFunds()) {
+            this.setBalanceOfFunds(this.getBalanceOfFunds() - value);
             this.addToInventory(car);
+            return true;
+        }
+        else {
+            return false;
         }
     }
 }

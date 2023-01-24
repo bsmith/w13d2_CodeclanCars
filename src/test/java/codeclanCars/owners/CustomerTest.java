@@ -33,14 +33,14 @@ public class CustomerTest {
 
     @Test
     public void cannotBuyCar() {
-        customer.buy(expensiveCar);
+        assertFalse(customer.buy(expensiveCar, expensiveCar.getValue()));
         assertTrue(customer.getInventory().isEmpty());
         assertEquals(30000.00, customer.getBalanceOfFunds(), 0.00);
     }
 
     @Test
     public void canBuyCar() {
-        customer.buy(cheapCar);
+        assertTrue(customer.buy(cheapCar, cheapCar.getValue()));
         assertEquals(1, customer.getInventory().size());
         assertEquals(10000.01, customer.getBalanceOfFunds(), 0.001);
     }

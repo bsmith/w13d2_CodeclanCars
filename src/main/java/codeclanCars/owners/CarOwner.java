@@ -28,4 +28,8 @@ public abstract class CarOwner {
     public void addToInventory(ICar car) {
         this.inventory.add(car);
     }
+
+    public void removeInventory(ICar car) {
+        this.inventory.remove(car);
+    }
 }
